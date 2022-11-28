@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <header class="header">
+            <div class="container">
+                <div class="btn-menu">
+                    <label for="btn-menu">☰</label>
+                </div>
+                <div class="logo"></div>
+                <nav class="menu">
+                    <a href="#">Nosotros</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </header>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Monitoreo energetico</title>
+
+        <!-- update the version number as needed -->
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+
+        <script src="https://kit.fontawesome.com/990ca34041.js" crossorigin="anonymous"></script>
+
+        <!-- include only the Firebase features as you need -->
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+
+        <link rel="stylesheet" href="estilos.css">
+
+        <!--grafica-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script>
+            // REPLACE WITH YOUR web app's Firebase configuration
+            const firebaseConfig = 
+        {
+            apiKey: "AIzaSyAycgDHRxNKJAw8eASDgZZNhmPUPXJLMcE",
+            authDomain: "monotoring-1ad02.firebaseapp.com",
+            projectId: "monotoring-1ad02",
+            storageBucket: "monotoring-1ad02.appspot.com",
+            messagingSenderId: "155751025421",
+            appId: "1:155751025421:web:e3811c891e19281499fe44",
+            measurementId: "G-DV4LVBBS98" 
+        };
+            
+
+
+            // Initialize firebase
+            firebase.initializeApp(firebaseConfig);
+
+            // Make auth and database references
+            const auth = firebase.auth();
+            const db = firebase.database();
+
+        </script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <!--TOP BAR-->
+        <div class="topnav">
+        <h1>energy Monotoring <i class="fas fa-clipboard-list"></i></h1>
+        </div>
+        <!--menu lateral-->
+        <div class="capa"></div>
+        <!--	--------------->
+        <input type="checkbox" id="btn-menu">
+        <div class="container-menu">    
+            <div class="cont-menu">
+                <nav>
+                    <a href="#">graficas mensual</a>
+                </nav>
+
+                <div id="authentication-bar" style="display: none;">
+                    <p><span id="authentication-status"></span>
+                    <span id="user-details"></span>
+                    <a href="/" id="logout-link"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </p>
+                </div>
+                <label for="btn-menu">✖️</label>
+            </div>
+        </div>
+
+        <!--LOGIN FORM-->
+        <form id="login-form" style="display: none;">
+            <div class="form-elements-container">
+                <label for="input-email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Username" id="input-email" required>
+        
+                <label for="input-password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="input-password" required>
+        
+                <button type="submit" id="login-button">Login</button>
+                <p id="error-message" style="color:red;"></p>
+            </div>
+        </form>
+        
+    <div id="charts-div">
+        
+        <div class="card2">
+            <p class="highcharts-description">
+            grafica mensual del consumo energetico
+            </p>
+            <div id="chart-temperature" class="chart-container"></div>
+
+        </div>
+    </div>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/charts-definitions.js"></script>
+        
+        
+    </body>
+</html>
